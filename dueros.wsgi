@@ -1,0 +1,1 @@
+from dueros import app as application
