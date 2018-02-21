@@ -2,6 +2,7 @@
 DuerOS skill deploy support.
 
 # require
-requests
-flask
-rsa
+
+* requests
+* flask
+* rsa
