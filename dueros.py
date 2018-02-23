@@ -1,4 +1,5 @@
 from flask import Flask, request
+from app.utils import root
 import os
 import sys
 from gunicorn.six import iteritems
@@ -10,23 +11,7 @@ app.logger.handlers.extend(gunicorn_error_logger.handlers)
 app.logger.setLevel(logging.DEBUG)
 app.logger.debug('this will show in the log')
 
-@app.route('/health')
-def healthcheck():
-    return "<h1>alive,verison 0.1.0</h1>"
-
-@app.route('/')
-def appliaction():
-    # Response for report alive
-    if request.method == "HEAD":
-        return 'alive'
-
-
-    header = request.headers
-    body = request.form
-    print(header,body)
-    return "<p>================================ HEADER ================================</p><br>" +str(header).replace("\n","<br>")+\
-           "<p>================================= FORM =================================</p>\n"+str(body)
-
+app.register_blueprint(root, url_prefix='/')
 
 @app.cli.command()
 def gen_certs():
@@ -42,6 +27,7 @@ def gen_certs():
     (pubkey, privkey) = rsa.newkeys(1024)
     pub = pubkey.save_pkcs1()
     pubfile = open(cert_path+'rsa_public_key.pem', 'w+')
+    print(pub.decode())
     pubfile.write(pub.decode())
     pubfile.close()
 
@@ -103,4 +89,4 @@ def deploy():
     return gui_app.run()
 
 if __name__ == '__main__':
-    app.run(port=8000)
+    app.run(port=8000, debug=True)

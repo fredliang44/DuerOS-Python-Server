@@ -4,3 +4,7 @@ certs/
 __pycache__/
 */__pycache__/
 log/
+en.bin
+testcert.py
+tmp/
+app/tools/
