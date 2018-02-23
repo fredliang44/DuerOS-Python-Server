@@ -2,9 +2,12 @@ import os
 from gunicorn.six import iteritems
 from config import app
 
+
 @app.cli.command()
 def gen_certs():
-    """Gen certs."""
+    """
+    Gen certs
+    """
     cert_path = os.path.split(os.path.realpath(__file__))[0] + "/certs/"
     try:
         os.mkdir(cert_path)
@@ -27,7 +30,9 @@ def gen_certs():
 
 @app.cli.command()
 def run():
-    """Run app."""
+    """
+    Run app
+    """
     print("=======================================================================\n"
           "================================ start ================================\n"
           "=======================================================================")
@@ -36,7 +41,9 @@ def run():
 
 @app.cli.command()
 def deploy():
-    """Deploy app."""
+    """
+    Deploy app
+    """
     app.config.update(
         DEBUG=False,
         TESTING=False,
@@ -76,17 +83,19 @@ def deploy():
 
 @app.cli.command()
 def init():
-    """Init file"""
-    if app.config["DATABASE_TYPE"] in ["mysql","sqlite"]:
+    """
+    Init file
+    """
+    if app.config["DATABASE_TYPE"] in ["mysql", "sqlite"]:
         print("=======================================================================\n"
-          "=============================== init db ===============================\n"
-          "=======================================================================")
+              "=============================== init db ===============================\n"
+              "=======================================================================")
         from models.mysql.init import init_db
         init_db()
     elif app.config["DATABASE_TYPE"] == "mongodb":
         print("=======================================================================\n"
-          "======================= no need to init mongodb =======================\n"
-          "=======================================================================")
+              "======================= no need to init mongodb =======================\n"
+              "=======================================================================")
 
 
 if __name__ == '__main__':
