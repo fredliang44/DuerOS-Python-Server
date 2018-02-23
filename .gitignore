@@ -4,8 +4,11 @@ certs/
 __pycache__/
 */__pycache__/
 log/
-
+build/
 en.bin
+settings.cfg
+*.db
 testcert.py
 tmp/
-app/tools/
+app/tools/auth.py
+app/tools/rsa_verify.py
