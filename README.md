@@ -98,5 +98,5 @@ log path `log/`
 flask deploy
 ```
 
-
+[![Maintainability](https://api.codeclimate.com/v1/badges/e4d1aea980a7d29d84b6/maintainability)](https://codeclimate.com/github/fredliang44/DuerOS-Python-Server/maintainability)
 

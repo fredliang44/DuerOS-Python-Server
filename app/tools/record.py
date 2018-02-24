@@ -2,7 +2,7 @@ import json
 from functools import wraps
 from app.utils import request
 
-def transform_sql(data):
+def transform_to_sql(data):
 	from models.mysql.activity import Activity
 	if data["request"]["type"] == "SessionEndedRequest":
 		activity = Activity(sessionId=data["session"]["sessionId"], userId=data["context"]["System"]["user"]["userId"],
@@ -38,7 +38,7 @@ def save(data):
 	elif app.config["DATABASE_TYPE"] in ["sqlite", "mysql"]:
 		from config import db
 
-		activity =  transform_sql(data)
+		activity =  transform_to_sql(data)
 
 		db.session.add(activity)
 		db.session.commit()
