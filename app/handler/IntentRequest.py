@@ -1,5 +1,4 @@
-import json
-
+from app.handler.Main import MainHandler
 """
 example = {
     "session": {
@@ -66,40 +65,18 @@ example = {
 }
 """
 
-class IntentRequestHandler:
-    def __init__(self, data):
-        self.__got_all_data = []
-        self.__got_data = None
-
-        if isinstance(data, dict):
-            self.data = data
-        elif isinstance(data, (str, bytes)):
-            self.data = json.loads(data)
-        else:
-            raise Exception("Unsupport IntentRequestHandler data type!")
-
-    def get(self, key):
-        self.traversal_dict(key, self.data, all=True)
-        return self.__got_data
-
-    def get_all(self, key):
-        self.traversal_dict(key, self.data, all=False)
-        return self.__got_all_data
-
-    """traversal to search key"""
-
-    def traversal_dict(self, key, dictionary, all):
-        if isinstance(dictionary, dict):
-            for x in range(len(dictionary)):
-                temp_key = list(dictionary.keys())[x]
-                temp_value = dictionary[temp_key]
-                if temp_key == key:
-                    if all:
-                        self.__got_all_data.extend(temp_value)
-                    else:
-                        self.__got_data = temp_value
-                    return
-
-                self.traversal_dict(key, temp_value, all=all)
-        else:
-            return None
+class IntentRequestHandler(MainHandler):
+    def save(self):
+        from models.mysql.activity import Activity
+        activity = Activity(
+            sessionId=self.data["session"]["sessionId"],
+            userId=self.data["context"]["System"]["user"]["userId"],
+            applicationID=self.data["context"]["System"]["application"]["applicationId"],
+            apiAccessToken=self.data["context"]["System"]["apiAccessToken"],
+            query=self.data["request"]["query"]["original"],
+            deviceId=self.data["context"]["System"]["device"]["deviceId"],
+            dialogRequestId=self.data["request"]["dialogRequestId"],
+            requestId=self.data["request"]["requestId"],
+            dialogState=self.data["request"]["dialogState"],
+            type=self.data["request"]["type"])
+        return activity
