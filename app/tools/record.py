@@ -16,13 +16,14 @@ def record(fn):
             elif app.config["DATABASE_TYPE"] in ["sqlite", "mysql"]:
                 from models.mysql.activity import Activity
                 from config import db
+                #
                 if data["request"]["type"] == "SessionEndedRequest":
                     activity = Activity(sessionId=data["session"]["sessionId"],
                                         applicationID=data["context"]["System"]["application"]["applicationId"],
                                         userId=data["context"]["System"]["user"]["userId"],
                                         apiAccessToken=data["context"]["System"]["apiAccessToken"],
                                         deviceId=data["context"]["System"]["device"]["deviceId"],
-                                        dialogRequestId=data["request"]["dialogRequestId"],
+                                        #dialogRequestId=data["request"]["dialogRequestId"],
                                         requestId=data["request"]["requestId"],
                                         type=data["request"]["type"])
 
@@ -48,13 +49,13 @@ def record(fn):
                                         requestId=data["request"]["requestId"],
                                         type=data["request"]["type"])
                 else:
-                    raise Exception("Invaid Database")
+                   raise Exception("Invaid request method")
 
                 db.session.add(activity)
                 db.session.commit()
-                print("\n\nADDED\n\n")
+
             else:
-                pass
+                raise Exception("Invaid Database")
             return fn(*args, **kwargs)
         else:
             return 'alive'

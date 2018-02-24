@@ -1,0 +1,110 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "e60e2eb25384e0105c31b6d208073dfb54988b8554d9b78b67ff06192162bedd"
+        },
+        "host-environment-markers": {
+            "implementation_name": "cpython",
+            "implementation_version": "3.6.1",
+            "os_name": "posix",
+            "platform_machine": "x86_64",
+            "platform_python_implementation": "CPython",
+            "platform_release": "17.4.0",
+            "platform_system": "Darwin",
+            "platform_version": "Darwin Kernel Version 17.4.0: Sun Dec 17 09:19:54 PST 2017; root:xnu-4570.41.2~1/RELEASE_X86_64",
+            "python_full_version": "3.6.1",
+            "python_version": "3.6",
+            "sys_platform": "darwin"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.6"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://mirrors.aliyun.com/pypi/simple/",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "certifi": {
+            "hashes": [],
+            "version": "==2018.1.18"
+        },
+        "chardet": {
+            "hashes": [],
+            "version": "==3.0.4"
+        },
+        "click": {
+            "hashes": [],
+            "version": "==6.7"
+        },
+        "flask": {
+            "hashes": [],
+            "version": "==0.12.2"
+        },
+        "flask-pymongo": {
+            "hashes": [],
+            "version": "==0.5.1"
+        },
+        "flask-sqlalchemy": {
+            "hashes": [],
+            "version": "==2.3.2"
+        },
+        "gunicorn": {
+            "hashes": [],
+            "version": "==19.7.1"
+        },
+        "idna": {
+            "hashes": [],
+            "version": "==2.6"
+        },
+        "itsdangerous": {
+            "hashes": [],
+            "version": "==0.24"
+        },
+        "jinja2": {
+            "hashes": [],
+            "version": "==2.10"
+        },
+        "markupsafe": {
+            "hashes": [],
+            "version": "==1.0"
+        },
+        "mysql-connector-python-rf": {
+            "hashes": [],
+            "version": "==2.2.2"
+        },
+        "pyasn1": {
+            "hashes": [],
+            "version": "==0.4.2"
+        },
+        "pymongo": {
+            "hashes": [],
+            "version": "==3.6.0"
+        },
+        "requests": {
+            "hashes": [],
+            "version": "==2.18.4"
+        },
+        "rsa": {
+            "hashes": [],
+            "version": "==3.4.2"
+        },
+        "sqlalchemy": {
+            "hashes": [],
+            "version": "==1.2.4"
+        },
+        "urllib3": {
+            "hashes": [],
+            "version": "==1.22"
+        },
+        "werkzeug": {
+            "hashes": [],
+            "version": "==0.14.1"
+        }
+    },
+    "develop": {}
+}
