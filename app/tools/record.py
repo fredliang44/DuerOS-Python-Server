@@ -3,6 +3,7 @@ from functools import wraps
 from app.utils import request
 
 
+
 def save(data):
 	from dueros import app
 	if app.config["DATABASE_TYPE"] == "mongodb":

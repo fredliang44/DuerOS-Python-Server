@@ -44,15 +44,10 @@ def deploy():
     """
     Deploy app
     """
-    app.config.update(
-        DEBUG=False,
-        TESTING=False,
-    )
+    app.config.update(DEBUG=False, TESTING=False)
 
-    try:
-        os.mkdir("log")
-    except BaseException:
-        pass
+    try: os.mkdir("log")
+    except BaseException: pass
 
     for file_name in ["log/error.log", "log/access.log"]:
         if not os.path.exists(file_name):
@@ -62,13 +57,11 @@ def deploy():
     guni_app = WSGIApplication()
     guni_app.app_uri = 'dueros:app'
 
-    options = {
-        'workers': 4,
-        'accesslog': 'log/access.log',
-        'errorlog': 'log/error.log',
-        'loglevel': 'info',
-        'bind': '127.0.0.1:8000',
-    }
+    options = {'workers': 4,
+               'accesslog': 'log/access.log',
+               'errorlog': 'log/error.log',
+               'loglevel': 'info',
+               'bind': '127.0.0.1:8000',}
 
     config = dict([(key, value) for key, value in iteritems(options)])
 
