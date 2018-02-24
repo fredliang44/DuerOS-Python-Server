@@ -4,16 +4,13 @@ from app.utils import request
 
 def transform_sql(data):
 	from models.mysql.activity import Activity
-
 	if data["request"]["type"] == "SessionEndedRequest":
 		activity = Activity(sessionId=data["session"]["sessionId"],
 		                    applicationID=data["context"]["System"]["application"]["applicationId"],
 		                    userId=data["context"]["System"]["user"]["userId"],
 		                    apiAccessToken=data["context"]["System"]["apiAccessToken"],
 		                    deviceId=data["context"]["System"]["device"]["deviceId"],
-		                    requestId=data["request"]["requestId"],
-		                    type=data["request"]["type"])
-
+		                    requestId=data["request"]["requestId"],type=data["request"]["type"])
 	elif data["request"]["type"] == "IntentRequest":
 		activity = Activity(sessionId=data["session"]["sessionId"],
 		                    applicationID=data["context"]["System"]["application"]["applicationId"],
@@ -23,9 +20,7 @@ def transform_sql(data):
 		                    query=data["request"]["query"]["original"],
 		                    dialogRequestId=data["request"]["dialogRequestId"],
 		                    requestId=data["request"]["requestId"],
-		                    dialogState=data["request"]["dialogState"],
-		                    type=data["request"]["type"])
-
+		                    dialogState=data["request"]["dialogState"],type=data["request"]["type"])
 	elif data["request"]["type"] == "LaunchRequest":
 		activity = Activity(sessionId=data["session"]["sessionId"],
 		                    applicationID=data["context"]["System"]["application"]["applicationId"],
@@ -33,8 +28,7 @@ def transform_sql(data):
 		                    userId=data["context"]["System"]["user"]["userId"],
 		                    deviceId=data["context"]["System"]["device"]["deviceId"],
 		                    dialogRequestId=data["request"]["dialogRequestId"],
-		                    requestId=data["request"]["requestId"],
-		                    type=data["request"]["type"])
+		                    requestId=data["request"]["requestId"],type=data["request"]["type"])
 	else:
 		raise Exception("Invaid request method")
 	return activity
