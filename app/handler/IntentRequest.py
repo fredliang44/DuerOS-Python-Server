@@ -1,5 +1,6 @@
 import json
 
+"""
 example = {
     "session": {
         "sessionId": "4477caec-2db7-495e-aec3-a0352df7dfdd",
@@ -63,7 +64,7 @@ example = {
     },
     "version": "v2.0"
 }
-
+"""
 
 class IntentRequestHandler:
     def __init__(self, data):
