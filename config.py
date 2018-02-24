@@ -19,14 +19,19 @@ default config
 """
 app.config.update(
     DATABASE_TYPE="sqlite",
-    SQLITE_DATABASE=os.path.split(os.path.realpath(__file__))[0] + '/database.db',
-    SQLALCHEMY_TRACK_MODIFICATIONS=True
-)
+    SQLITE_DATABASE=os.path.split(
+        os.path.realpath(__file__))[0] +
+    '/database.db',
+    SQLALCHEMY_TRACK_MODIFICATIONS=True)
 
 """
 config from files
 """
-app.config.from_pyfile(os.path.split(os.path.realpath(__file__))[0] + '/settings.cfg', silent=True)
+app.config.from_pyfile(
+    os.path.split(
+        os.path.realpath(__file__))[0] +
+    '/settings.cfg',
+    silent=True)
 
 """
 database config
@@ -41,10 +46,10 @@ elif app.config["DATABASE_TYPE"] == "mysql":
     prefix = "mysql+mysqlconnector://"
     full_path = ''.join([x + app.config[y]
                          for x, y in [['', "MYSQL_USERNAME"],
-                                     [":", "MYSQL_PASSWORD"],
-                                     ["@", "MYSQL_HOST"],
-                                     [':', "MYSQL_PORT"],
-                                     ['/', "MYSQL_DBNAME"]] if app.config[y] != ""])
+                                      [":", "MYSQL_PASSWORD"],
+                                      ["@", "MYSQL_HOST"],
+                                      [':', "MYSQL_PORT"],
+                                      ['/', "MYSQL_DBNAME"]] if app.config[y] != ""])
     app.config['SQLALCHEMY_DATABASE_URI'] = prefix + full_path
     db = SQLAlchemy(app)
 
