@@ -81,8 +81,10 @@ def appliaction():
 
         handle = Lamp(data)
         handle.load("Recived")
-        print("========================================respond========================================\n",
-              handle.respond(ensure_ascii=False))
+        print(
+            "========================================respond========================================\n",
+            handle.respond(
+                ensure_ascii=False))
         return handle.respond()
 
     else:

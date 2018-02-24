@@ -44,15 +44,10 @@ def deploy():
     """
     Deploy app
     """
-    app.config.update(
-        DEBUG=False,
-        TESTING=False,
-    )
+    app.config.update(DEBUG=False, TESTING=False)
 
-    try:
-        os.mkdir("log")
-    except BaseException:
-        pass
+    try: os.mkdir("log")
+    except BaseException: pass
 
     for file_name in ["log/error.log", "log/access.log"]:
         if not os.path.exists(file_name):
@@ -62,83 +57,11 @@ def deploy():
     guni_app = WSGIApplication()
     guni_app.app_uri = 'dueros:app'
 
-    options = {
-        'workers': 4,
-        'accesslog': 'log/access.log',
-        'errorlog': 'log/error.log',
-        'loglevel': 'info',
-        'bind': '127.0.0.1:8000',
-    }
-    #
-    # import logging.config
-    # logging.config.dictConfig(config= {
-    #                             'version': 1,
-    #                             'disable_existing_loggers': True,
-    #                             'root': {
-    #                                 'level': 'WARNING',
-    #                                 'handlers': ['sentry'],
-    #                             },
-    #                             'formatters': {
-    #                                 'verbose': {
-    #                                     'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
-    #                                 },
-    #                                 'generic': {
-    #                                     'format': '%(asctime)s [%(process)d] [%(levelname)s] %(message)s',
-    #                                     'datefmt': '%Y-%m-%d %H:%M:%S',
-    #                                     '()': 'logging.Formatter',
-    #                                 },
-    #                             },
-    #                             'handlers': {
-    #                                 'sentry': {
-    #                                     'level': 'ERROR',
-    #                                     'class': 'raven.contrib.django.handlers.SentryHandler',
-    #                                 },
-    #                                 'console': {
-    #                                     'level': 'DEBUG',
-    #                                     'class': 'logging.StreamHandler',
-    #                                     'formatter': 'verbose'
-    #                                 },
-    #                                 'error_file': {
-    #                                     'class': 'logging.FileHandler',
-    #                                     'formatter': 'generic',
-    #                                     'filename': 'log/error.log',
-    #
-    #                                 },
-    #                                 'access_file': {
-    #                                     'class': 'logging.FileHandler',
-    #                                     'formatter': 'generic',
-    #                                     'filename':'log/access.log',
-    #                                 },
-    #                             },
-    #                             'loggers': {
-    #                                 'django.db.backends': {
-    #                                     'level': 'ERROR',
-    #                                     'handlers': ['console'],
-    #                                     'propagate': False,
-    #                                 },
-    #                                 'raven': {
-    #                                     'level': 'DEBUG',
-    #                                     'handlers': ['console'],
-    #                                     'propagate': False,
-    #                                 },
-    #                                 'sentry.errors': {
-    #                                     'level': 'DEBUG',
-    #                                     'handlers': ['console'],
-    #                                     'propagate': False,
-    #                                 },
-    #                                 'gunicorn.error': {
-    #                                     'level': 'INFO',
-    #                                     'handlers': ['error_file'],
-    #                                     'propagate': True,
-    #                                 },
-    #                                 'gunicorn.access': {
-    #                                     'level': 'INFO',
-    #                                     'handlers': ['access_file'],
-    #                                     'propagate': False,
-    #                                 },
-    #                             },
-    #                         }
-    #                         )
+    options = {'workers': 4,
+               'accesslog': 'log/access.log',
+               'errorlog': 'log/error.log',
+               'loglevel': 'info',
+               'bind': '127.0.0.1:8000',}
 
     config = dict([(key, value) for key, value in iteritems(options)])
 
