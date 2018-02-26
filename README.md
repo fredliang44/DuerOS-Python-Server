@@ -48,6 +48,7 @@ python3, pip
 ### Option 1: Using requirements.txt
 ```shell
 git clone https://github.com/fredliang44/DuerOS-Python-Server.git
+cd DuerOS-Python-Server
 pip3 install -r requirements.txt
 export FLASK_APP=$(pwd)/DuerOS-Python-Server/dueros.py
 ```
@@ -55,6 +56,7 @@ export FLASK_APP=$(pwd)/DuerOS-Python-Server/dueros.py
 ### Option 2: Using setuptools
 ```shell
 git clone https://github.com/fredliang44/DuerOS-Python-Server.git
+cd DuerOS-Python-Server
 python3 setup.py install
 export FLASK_APP=$(pwd)/DuerOS-Python-Server/dueros.py
 ```
