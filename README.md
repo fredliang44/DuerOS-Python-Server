@@ -23,23 +23,36 @@ python3, pip
 ## 4.Tree
 
 ```shell
+├── Pipfile
+├── Pipfile.lock
 ├── README.md
 ├── app
 │   ├── __init__.py
+│   ├── handler
+│   │   ├── DiscoverAppliancesRequest.py
+│   │   ├── IntentRequest.py
+│   │   ├── LaunchRequest.py
+│   │   ├── Main.py
+│   │   └── SessionEndedRequest.py
 │   ├── tools
-│   │   └── record.py
-│   └── utils.py (handle requests)
+│   │   ├─auth.py
+│   │   ├── record.py
+│   │   └── rsa_verify.py
+│   └── utils.py                                //handle requests
 ├── config.py
 ├── database.db
 ├── defaults
-│   └── settings.cfg (default config)
+│   └── settings.cfg                            //default config
 ├── dueros.py
+├── log
+│   ├── access.log
+│   └── error.log
 ├── models
 │   └── mysql
-│       ├── activity.py (log activity)
-│       └── init.py (init database)
+│       ├── activity.py                         //log activity
+│       └── init.py                             //init database
 ├── requirements.txt
-├── settings.cfg (copy from defaults/settings.cfg and edit with your config)
+├── settings.cfg                                //copy from defaults/settings.cfg and edit with your config
 └── setup.py
 ```
 
