@@ -28,7 +28,7 @@ python3, pip
 ├── README.md
 ├── app
 │   ├── __init__.py
-│   ├── handler
+│   ├── handler                                 //handle requets(main part)
 │   │   ├── DiscoverAppliancesRequest.py
 │   │   ├── IntentRequest.py
 │   │   ├── LaunchRequest.py
@@ -52,7 +52,7 @@ python3, pip
 │       ├── activity.py                         //log activity
 │       └── init.py                             //init database
 ├── requirements.txt
-├── settings.cfg                                //copy from defaults/settings.cfg and edit with your config
+├── settings.cfg                                //copy from defaults/settings.cfg and edit with your own config
 └── setup.py
 ```
 
@@ -74,6 +74,10 @@ python3 setup.py install
 export FLASK_APP=$(pwd)/DuerOS-Python-Server/dueros.py
 ```
 
+### Option 3: Using pipenv
+```shell
+pipenv install
+```
 
 Please edit and uncomment your config in`defaults/settings.cfg`
 
@@ -111,6 +115,11 @@ gunicorn -w 4 -b 0.0.0.0:8000 dueros:app
 log path `log/`
 ```shell
 flask deploy
+```
+
+### Option2: Using pipenv
+```
+pipenv shell flask deploy
 ```
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/e4d1aea980a7d29d84b6/maintainability)](https://codeclimate.com/github/fredliang44/DuerOS-Python-Server/maintainability)
