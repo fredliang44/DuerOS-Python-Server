@@ -44,6 +44,9 @@ respond_template = {
 }
 
 
+"""
+For test
+"""
 class Lamp:
     def __init__(self, request):
         self.json = copy.deepcopy(respond_template)
@@ -63,7 +66,9 @@ class Lamp:
 
     def respond(self, **kwargs):
         return json.dumps(self.json, indent=2, **kwargs)
-
+"""
+End
+"""
 
 @root.route('/', methods=["HEAD", "GET", "POST"])
 @record

@@ -1,6 +1,6 @@
 import json
 from functools import wraps
-from app.utils import request
+from app.request import request
 from app.handler import IntentRequest, SessionEndedRequest, LaunchRequest
 
 def transform_data(data):
