@@ -7,8 +7,8 @@ name = "pypi"
 
 [packages]
 
-Flask = "*"
-Flask-SQLAlchemy = "*"
+flask = "*"
+flask-sqlalchemy = "*"
 gunicorn = "*"
 rsa = "*"
 flask-pymongo = "*"

@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "e60e2eb25384e0105c31b6d208073dfb54988b8554d9b78b67ff06192162bedd"
+            "sha256": "d8e3ea7c5a1c9b5a6483f4741f35cb0cac12ae6eee82ce3e64f1af1433ab4064"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -83,7 +83,7 @@
         },
         "pymongo": {
             "hashes": [],
-            "version": "==3.6.0"
+            "version": "==3.6.1"
         },
         "requests": {
             "hashes": [],

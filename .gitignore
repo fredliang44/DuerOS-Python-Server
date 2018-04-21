@@ -12,3 +12,4 @@ testcert.py
 tmp/
 app/tools/auth.py
 app/tools/rsa_verify.py
+.vscode

@@ -1,7 +1,6 @@
 import os
-from gunicorn.six import iteritems
 from config import app
-
+from gunicorn.six import iteritems
 
 @app.cli.command()
 def gen_certs():
